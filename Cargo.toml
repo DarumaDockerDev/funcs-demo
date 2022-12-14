@@ -1,0 +1,4 @@
+[workspace]
+members = [
+  "slack/slack/normal"
+]
