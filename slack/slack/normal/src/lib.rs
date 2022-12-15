@@ -11,5 +11,6 @@ pub fn prepare() {
 pub fn work() {
     if let Some(sm) = get_event() {
         send_message_to_channel("reactorlocal", "random", sm.text + "---");
+        send_message_to_channel("reactorlocal", "random", String::from("^_%"));
     }
 }
