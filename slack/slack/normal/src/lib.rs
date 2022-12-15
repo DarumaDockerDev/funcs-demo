@@ -8,9 +8,6 @@ pub fn prepare() {
     if let Some(sm) = listen_to_channel("reactorlocal", "random") {
         send_message_to_channel("reactorlocal", "random", sm.text);
     }
-    if let Some(sm) = listen_to_channel("reactorlocal", "general") {
-        send_message_to_channel("reactorlocal", "general", sm.text);
-    }
 }
 
 #[no_mangle]
