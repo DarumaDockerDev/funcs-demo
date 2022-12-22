@@ -1,0 +1,12 @@
+[package]
+name = "lambda-normal"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+lambda-flows = "0.1"
+slack-flows = "0.1"

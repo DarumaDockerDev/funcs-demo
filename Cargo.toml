@@ -1,4 +1,5 @@
 [workspace]
 members = [
-  "slack/slack/normal"
+  "slack/slack/normal",
+  "lambda/normal"
 ]
