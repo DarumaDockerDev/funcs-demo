@@ -3,7 +3,7 @@ use slack_flows::{
 };
 
 #[no_mangle]
-pub fn prepare() {
+pub fn register() {
     revoke_listeners();
     if let Some(sm) = listen_to_channel("reactorlocal", "t1") {
         send_message_to_channel("reactorlocal", "t1", sm.text);
