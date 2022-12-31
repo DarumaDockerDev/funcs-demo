@@ -3,7 +3,7 @@ use slack_flows::send_message_to_channel;
 
 #[no_mangle]
 pub fn register() {
-    listen_to_request(String::from("* * *"), String::from("ababa"));
+    listen_to_request(String::from("55 6 * * *"), String::from("ababa"));
 }
 
 #[no_mangle]
