@@ -9,4 +9,4 @@ crate-type = ["cdylib"]
 
 [dependencies]
 slack-flows = "0.1"
-schedule-flows = { path = "../../../schedule-flows" }
+schedule-flows = "0.1"
