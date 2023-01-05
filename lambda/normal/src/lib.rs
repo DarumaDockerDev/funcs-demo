@@ -1,5 +1,5 @@
 use lambda_flows::{listen_to_request, message_from_request, send_response};
-use slack_flows::send_message_to_channel;
+use slack_flows::{send_message_to_channel, upload_file};
 use store_flows::{get, set};
 
 #[no_mangle]
@@ -9,6 +9,14 @@ pub fn register() {
 
 #[no_mangle]
 pub fn work() {
+    upload_file(
+        "reactorlocal",
+        "t1",
+        "arch.jpg",
+        "jpg",
+        include_bytes!("./arch.jpg").to_vec(),
+    );
+
     let (_qry, body) = message_from_request();
     let count = match get("count") {
         Some(c) => c.as_i64().unwrap_or(0) + 1,
