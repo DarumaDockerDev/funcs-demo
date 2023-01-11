@@ -1,17 +1,14 @@
-use schedule_flows::{listen_to_request, message_from_request};
+use schedule_flows::cron_job_evoked;
 use slack_flows::send_message_to_channel;
 
 #[no_mangle]
-pub fn register() {
-    listen_to_request(String::from("55 6 * * *"), String::from("ababa"));
-}
-
-#[no_mangle]
-pub fn work() {
-    let body = message_from_request();
-    send_message_to_channel(
-        "reactorlocal",
-        "random",
-        String::from_utf8_lossy(&body).into_owned(),
-    );
+pub fn run() {
+    if let Some(body) = cron_job_evoked(String::from("50 8 * * *"), String::from("cron_job_evoked"))
+    {
+        send_message_to_channel(
+            "reactorlocal",
+            "random",
+            String::from_utf8_lossy(&body).into_owned(),
+        );
+    }
 }
