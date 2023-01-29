@@ -4,25 +4,25 @@ use store_flows::{get, set};
 
 #[no_mangle]
 pub fn run() {
-    upload_file(
-        "reactorlocal",
-        "t1",
-        "arch.jpg",
-        "jpg",
-        include_bytes!("./arch.jpg").to_vec(),
-    );
-
-    if let Some((_qry, body)) = request_received() {
+    request_received(|_qry, body| {
         let count = match get("count") {
             Some(c) => c.as_i64().unwrap_or(0) + 1,
             None => 1,
         };
         set("count", serde_json::json!(count));
 
-        if count % 2 == 0 {
+        if count % 1 == 0 {
+            upload_file(
+                "reactorlocal",
+                "t1",
+                "arch.jpg",
+                "jpg",
+                include_bytes!("./arch.jpg").to_vec(),
+            );
+
             send_message_to_channel(
                 "reactorlocal",
-                "random",
+                "t1",
                 String::from_utf8_lossy(&body).into_owned(),
             );
         }
@@ -31,5 +31,5 @@ pub fn run() {
             vec![(String::from("content-type"), String::from("text/html"))],
             "ok".as_bytes().to_vec(),
         );
-    }
+    });
 }

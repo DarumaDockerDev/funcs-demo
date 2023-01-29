@@ -2,5 +2,6 @@
 members = [
   "slack/slack/normal",
   "lambda/normal",
+  "lambda/oauth",
   "schedule/normal",
 ]

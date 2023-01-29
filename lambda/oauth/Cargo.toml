@@ -1,5 +1,5 @@
 [package]
-name = "lambda-normal"
+name = "lambda-oauth"
 version = "0.1.0"
 edition = "2021"
 
@@ -11,5 +11,5 @@ crate-type = ["cdylib"]
 airtable-flows = { path = "../../../airtable-flows/airtable-sdk" }
 lambda-flows = { path = "../../../lambda-flows/lambda-sdk" }
 serde_json = "1.0"
-slack-flows = { path = "../../../slack-flows/slack-sdk" }
-store-flows = "0.1"
+http_req_wasi = "0.10"
+urlencoding = "2"
