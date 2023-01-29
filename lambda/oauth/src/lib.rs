@@ -6,9 +6,6 @@ use http_req::{
 use lambda_flows::{request_received, send_response};
 use serde_json::Value;
 
-const GITHUB_APP_CLIENT_ID: &'static str = "Iv1.db5ec9fc08b022c1";
-const GITHUB_APP_CLIENT_SECRET: &'static str = "f105523786831ff8e35546d534190fc64c2c8309";
-
 #[no_mangle]
 pub fn run() {
     request_received(|qry, _body| {
@@ -48,8 +45,8 @@ pub fn run() {
 fn get_access(code: &str) -> Option<String> {
     let uri = Uri::try_from("https://github.com/login/oauth/access_token").unwrap();
     let params = serde_json::json!({
-        "client_id": GITHUB_APP_CLIENT_ID,
-        "client_secret": GITHUB_APP_CLIENT_SECRET,
+        "client_id": std::env::var("GITHUB_APP_CLIENT_ID").unwrap(),
+        "client_secret": std::env::var("GITHUB_APP_CLIENT_SECRET").unwrap(),
         "code": code,
     });
     let params = serde_json::to_string(&params).unwrap();
