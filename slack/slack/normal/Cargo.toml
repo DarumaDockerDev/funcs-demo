@@ -8,4 +8,4 @@ path = "src/lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
-slack-flows = { path = "../../../../slack-flows/slack-sdk" }
+slack-flows = "0.2"

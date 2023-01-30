@@ -8,8 +8,8 @@ path = "src/lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
-airtable-flows = { path = "../../../airtable-flows/airtable-sdk" }
-lambda-flows = { path = "../../../lambda-flows/lambda-sdk" }
+airtable-flows = "0.1"
+lambda-flows = "0.2"
 serde_json = "1.0"
-slack-flows = { path = "../../../slack-flows/slack-sdk" }
+slack-flows = "0.2"
 store-flows = "0.1"
