@@ -13,11 +13,12 @@ pub fn run() {
         r.iter().for_each(|c| {
             send_message_to_channel("reactorlocal", "general", c.to_string());
         });
+
         /*
         let tweet = serde_json::json!({
             "text": sm.text
         });
-        create_tweet(tweet);
+        create_tweet(String::from("DarumaDockerDev"), tweet);
         */
     });
 }
