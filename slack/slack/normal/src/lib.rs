@@ -11,7 +11,7 @@ pub fn run() {
         };
         let r = create_completion("DarumaDocker", cr);
         r.iter().for_each(|c| {
-            send_message_to_channel("reactorlocal-", "general", c.to_string());
+            send_message_to_channel("reactorlocal", "general", c.to_string());
         });
 
         /*
