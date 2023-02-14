@@ -4,14 +4,14 @@ use slack_flows::{listen_to_channel, send_message_to_channel};
 
 #[no_mangle]
 pub fn run() {
-    listen_to_channel("reactorlocal-", "t1", |sm| {
+    listen_to_channel("reactorlocal", "t1", |sm| {
         let cr = CompletionRequest {
             prompt: sm.text,
             ..Default::default()
         };
         let r = create_completion("DarumaDocker", cr);
         r.iter().for_each(|c| {
-            send_message_to_channel("reactorlocal", "general", c.to_string());
+            send_message_to_channel("reactorlocal-", "general", c.to_string());
         });
 
         /*
