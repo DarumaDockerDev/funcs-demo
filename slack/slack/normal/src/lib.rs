@@ -9,7 +9,9 @@ pub fn run() {
             prompt: sm.text,
             ..Default::default()
         };
+        println!("-----");
         let r = create_completion("DarumaDocker", cr);
+        println!("{:?}", r);
         r.iter().for_each(|c| {
             send_message_to_channel("reactorlocal-", "general", c.to_string());
         });
