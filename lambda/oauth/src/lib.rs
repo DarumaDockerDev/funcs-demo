@@ -13,31 +13,39 @@ pub fn run() {
             if let Some(code) = code.as_str() {
                 if let Some(token) = get_access(code) {
                     if let Some(user) = get_user(&token) {
-                        let record = serde_json::json!({
-                            "Login": user["login"],
-                            "Name": user["name"],
-                            "Company": user["company"],
-                            "Blog": user["blog"],
-                            "Email": user["email"],
-                            "Location": user["location"],
-                            "Bio": user["bio"],
-                            "Twitter Username": user["twitter_username"],
-                            "Created At": user["created_at"]
-                        });
-                        create_record(
-                            "DarumaDockerDev",
-                            "appLjd0KmtnCf3l0r",
-                            "OAuth Users",
-                            record,
-                        );
+                        if let Some(account) = qry.get("state") {
+                            if let Some(account) = account.as_str() {
+                                let record = serde_json::json!({
+                                    "Web3Account": account,
+                                    "Login": user["login"],
+                                    "Name": user["name"],
+                                    "Company": user["company"],
+                                    "Blog": user["blog"],
+                                    "Email": user["email"],
+                                    "Location": user["location"],
+                                    "Bio": user["bio"],
+                                    "Twitter Username": user["twitter_username"],
+                                    "Created At": user["created_at"]
+                                });
+                                create_record(
+                                    "DarumaDockerDev",
+                                    "appLjd0KmtnCf3l0r",
+                                    "OAuth Users",
+                                    record,
+                                );
+                            }
+                        }
                     }
                 }
             }
         }
         send_response(
-            200,
-            vec![(String::from("content-type"), String::from("text/html"))],
-            "ok".as_bytes().to_vec(),
+            302,
+            vec![(
+                String::from("Location"),
+                String::from("https://www.google.com"),
+            )],
+            "".as_bytes().to_vec(),
         );
     });
 }
