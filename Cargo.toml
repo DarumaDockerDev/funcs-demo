@@ -2,6 +2,7 @@
 members = [
   "slack/slack/normal",
   "lambda/normal",
-  "lambda/oauth",
+  "lambda/web3bounty/search",
+  "lambda/web3bounty/github-oauth",
   "schedule/normal",
 ]
